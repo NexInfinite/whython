@@ -49,3 +49,9 @@ and also easily add builtins (right now its kind of tedious).
 # How can I contribute?
 Either create a request on GitHub or message me on discord `Nexin#0001` to ask for
 new features.
+
+# Background
+This project was meant to be something small to learn about how languages run, but 
+now it's a little more than that. I was originally following `codepulse`'s 
+tutorial on YouTube but have since change a lot of the grammar rules and made 
+it easier to debug. 
