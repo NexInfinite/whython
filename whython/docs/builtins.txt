@@ -1,0 +1,26 @@
+DONE:
+    print
+    input
+    input_int
+    clear
+    exit
+    update_value
+    is_num
+    is_string
+    is_list
+    is_function
+    append
+    pop
+    extend
+    run
+    length
+    randint
+TODO:
+    to_str
+    to_int
+    run("../helloworld.whython")
+    run("../guesser.whython")
+    run("../errortest.whython")
+    run("../changelist.whython")
+FIXME:
+    executes
