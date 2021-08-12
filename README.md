@@ -7,6 +7,11 @@ a change that makes it more like a language they know; a change that makes
 it easier for new people to learn the language; or even a change that makes
 it into a shitpost, it doesn't matter. You have the control!
 
+# How to run
+1. Download [whython](whython)
+2. Run [shell.py](whython/shell.py)
+3. Have fun!
+
 # What can whython do?
 At the point of writing this (the first main push) you can change anything in the 
 file [editable.py](whython/editable_/editable.py). This means you can change all the 
