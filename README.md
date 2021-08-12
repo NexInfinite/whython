@@ -2,4 +2,4 @@
 > Please stand by!
 
 # whython
-An almsot fully customizable language made in python!
+An almost fully customizable language made in python!
