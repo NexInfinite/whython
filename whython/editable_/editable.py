@@ -70,7 +70,7 @@ global_symbol_table.set("true", Number.true)
 global_symbol_table.set("false", Number.false)
 global_symbol_table.set("pi", Number.pi)
 
-global_symbol_table.set("shout", BuiltInFunction.print)
+global_symbol_table.set("print", BuiltInFunction.print)
 global_symbol_table.set("input", BuiltInFunction.input)
 global_symbol_table.set("input_int", BuiltInFunction.input_int)
 global_symbol_table.set("clear", BuiltInFunction.clear)

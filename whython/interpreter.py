@@ -7,7 +7,7 @@ from errors import RTError
 from runtime_results import RTResult
 from symbol_table import SymbolTable
 from lexer import Lexer
-from parser import Parser
+from parser_ import Parser
 from tokens import *
 from values.value_string import String
 from values.value_number import Number
