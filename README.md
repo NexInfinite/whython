@@ -29,6 +29,8 @@ let x = 10
 <br>to<br>
 ![img_1.png](images/keywords_dict_2.png)
 
+If you want to be super quirky you can even use emojis in the `KEYWORDS_DICT` and make
+some horrible emoji language!
 ### Builtin functions
 You may hate calling print like this:
 ```
@@ -41,6 +43,20 @@ shout("Hello, World!")
 ![img.png](images/builtins_1.png)
 <br>to<br>
 ![img_1.png](images/builtins_2.png)
+
+### Syntax
+Sometimes it can be annoying typing out:
+``` 
+var x = 10
+```
+so you may want this:
+``` 
+x = 10
+```
+To do this change:
+![img.png](images/syntax_1.png)
+<br>to<br>
+![img_1.png](images/syntax_2.png)
 
 # What are the plans?
 I am planning to allow more control, for example a way to change all grammar rules 
