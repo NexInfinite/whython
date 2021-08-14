@@ -5,6 +5,7 @@
 from tokens import *
 from errors import *
 from nodes_.nodes import *
+from editable_.editable import *
 
 
 # *###################
@@ -54,6 +55,7 @@ class Parser:
         self.current_tok = None
         self.tokens = tokens
         self.tok_idx = -1
+        self.found_item_after_identifier = False
         self.advance()
 
     def advance(self):
@@ -72,10 +74,14 @@ class Parser:
 
     def parse(self):
         res = self.statements()
-        if not res.error and self.current_tok.type != TT_EOF:
+        if res.error and self.current_tok.type != TT_EOF:
+            print(self.current_tok.type)
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                "Expected '+', '-', '*', or '/'"
+                f"Expected "
+                f"'{KEYWORDS_DICT['if']}', '{KEYWORDS_DICT['for']}', "
+                f"'{KEYWORDS_DICT['while']}', '{KEYWORDS_DICT['func']}', "
+                f"int, float, identifier, '+', '-', '(', or '['"
             ))
         return res
 
@@ -593,6 +599,7 @@ class Parser:
             self.advance()
             expr = res.register(self.expr())
             if res.error: return res
+            print(self.current_tok.type)
             if self.current_tok.type == TT_RPAREN:
                 res.register_advancement()
                 self.advance()
@@ -719,7 +726,12 @@ class Parser:
         if res.error:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"Expected int, float, identifier, '+', '-', '(', '[', or '{KEYWORDS_DICT['not']}'"
+                f"Expected '=', '{KEYWORDS_DICT['return']}', '{KEYWORDS_DICT['continue']}', "
+                f"'{KEYWORDS_DICT['break']}', '{KEYWORDS_DICT['and']}', "
+                f"'{KEYWORDS_DICT['if']}', '{KEYWORDS_DICT['for']}', "
+                f"'{KEYWORDS_DICT['while']}', '{KEYWORDS_DICT['func']}', "
+                f"int, float, identifier, '+', '-', '(', '[', '{KEYWORDS_DICT['not']}',"
+                f"or builtin function"
             ))
 
         return res.success(node)
@@ -727,9 +739,15 @@ class Parser:
     def expr(self):
         res = ParseResult()
 
-        if self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['var']):
-            res.register_advancement()
-            self.advance()
+        no_keyword_check = not GRAMMAR_USE_IDENTIFIER_FOR_ASSIGNMENT \
+                           and \
+                           self.current_tok.type == TT_IDENTIFIER
+        if self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['var']) or no_keyword_check and not self.found_item_after_identifier:
+            self.found_item_after_identifier = True
+
+            if self.current_tok.type != TT_IDENTIFIER:
+                res.register_advancement()
+                self.advance()
 
             if self.current_tok.type != TT_IDENTIFIER:
                 return res.failure(InvalidSyntaxError(
@@ -742,10 +760,31 @@ class Parser:
             self.advance()
 
             if self.current_tok.type != TT_EQ:
-                return res.failure(InvalidSyntaxError(
-                    self.current_tok.pos_start, self.current_tok.pos_end,
-                    "Expected '='"
-                ))
+                if not GRAMMAR_USE_IDENTIFIER_FOR_ASSIGNMENT:
+                    self.reverse()
+                    node = res.register(self.bin_op(self.comp_expr, (
+                    (TT_KEYWORD, KEYWORDS_DICT["and"]), (TT_KEYWORD, KEYWORDS_DICT["or"]))))
+                    if res.error:
+                        self.found_item_after_identifier = False
+                        return res.failure(InvalidSyntaxError(
+                            self.current_tok.pos_start, self.current_tok.pos_end,
+                            f"Expected '=', '{KEYWORDS_DICT['return']}', '{KEYWORDS_DICT['continue']}', "
+                            f"'{KEYWORDS_DICT['break']}', '{KEYWORDS_DICT['and']}', "
+                            f"'{KEYWORDS_DICT['if']}', '{KEYWORDS_DICT['for']}', "
+                            f"'{KEYWORDS_DICT['while']}', '{KEYWORDS_DICT['func']}', "
+                            f"int, float, identifier, '+', '-', '(', '[', '{KEYWORDS_DICT['not']}',"
+                            f"or builtin function"
+                        ))
+
+                    return res.success(node)
+                else:
+                    if self.current_tok.type != TT_IDENTIFIER:
+                        self.reverse(2)
+                    self.found_item_after_identifier = False
+                    return res.failure(InvalidSyntaxError(
+                        self.current_tok.pos_start, self.current_tok.pos_end,
+                        "Expected '='"
+                    ))
 
             res.register_advancement()
             self.advance()
@@ -754,8 +793,8 @@ class Parser:
             return res.success(VarAssignNode(var_name, expr))
 
         node = res.register(self.bin_op(self.comp_expr, ((TT_KEYWORD, KEYWORDS_DICT["and"]), (TT_KEYWORD, KEYWORDS_DICT["or"]))))
-
         if res.error:
+            self.found_item_after_identifier = False
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
                 f"Expected '{KEYWORDS_DICT['return']}', '{KEYWORDS_DICT['continue']}', "

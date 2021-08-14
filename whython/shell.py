@@ -1,5 +1,4 @@
 import run as whython
-from values.value_number import Number
 
 while True:
     text = input("whython > ")
@@ -9,7 +8,11 @@ while True:
     if error: print(error.as_string())
     elif result:
         if len(result.elements) == 1:
-            if not isinstance(result.elements[0], Number) and result.elements[0] is None:
-                print(result.elements[0])
+            for element in result.elements:
+                try:
+                    if element.value is not None:
+                        print(element)
+                except AttributeError:
+                    pass
         else:
             print(repr(result))

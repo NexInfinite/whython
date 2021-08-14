@@ -18,9 +18,3 @@ DONE:
 TODO:
     to_str
     to_int
-    run("../helloworld.whython")
-    run("../guesser.whython")
-    run("../errortest.whython")
-    run("../changelist.whython")
-FIXME:
-    executes

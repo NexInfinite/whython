@@ -1,4 +1,4 @@
-var number = randint(1, 100)
+number = randint(1, 100)
 
 func winner()
     print("This is the winner message!!!")
