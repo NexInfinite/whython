@@ -53,7 +53,7 @@ so you may want this:
 ``` 
 x = 10
 ```
-To do this change:
+To do this change:<br>
 ![img.png](images/syntax_1.png)
 <br>to<br>
 ![img_1.png](images/syntax_2.png)
