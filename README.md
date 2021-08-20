@@ -58,6 +58,12 @@ To do this change:<br>
 <br>to<br>
 ![img_1.png](images/syntax_2.png)
 
+# Todo
+There are a couple of builtin function that have not been created yet, this will be 
+done in the future.
+- [ ] to_str
+- [ ] to_int
+
 # What are the plans?
 I am planning to allow more control, for example a way to change all grammar rules 
 and also easily add builtins (right now its kind of tedious).

@@ -100,5 +100,5 @@ global_symbol_table.set("randint", BuiltInFunction("randint"))
 
 # With this True you will need "var".
 # With it False you can either use "var" or not.
-GRAMMAR_USE_IDENTIFIER_FOR_ASSIGNMENT = False
+GRAMMAR_USE_IDENTIFIER_FOR_ASSIGNMENT = True
 # More coming soon....
