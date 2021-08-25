@@ -58,11 +58,26 @@ To do this change:<br>
 <br>to<br>
 ![img_1.png](images/syntax_2.png)
 
+### Eval
+There are things in this language that you can only do in python. If you need 
+to run python eval then you can do:
+``` 
+var test = `print("This is from python")`
+eval(test)
+```
+Which will output<br>
+![img.png](images/eval_1.png)
+<br>
+This is all editable in the editable.py file.
+
+
 # Todo
 There are a couple of builtin function that have not been created yet, this will be 
 done in the future.
-- [ ] to_str
-- [ ] to_int
+- [x] to_str
+- [x] to_int
+- [x] eval
+- [ ] make builtins easier to add
 
 # What are the plans?
 I am planning to allow more control, for example a way to change all grammar rules 

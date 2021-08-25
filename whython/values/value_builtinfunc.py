@@ -20,6 +20,9 @@ from execute.execute_pop import execute_pop_func
 from execute.execute_extend import execute_extend_func
 from execute.execute_len import execute_len_func
 from execute.execute_run import execute_run_func
+from execute.execute_to_str import execute_to_str_func
+from execute.execute_to_int import execute_to_int_func
+from execute.execute_pyeval import execute_pyeval_func
 
 from runtime_results import RTResult
 
@@ -267,20 +270,61 @@ class BuiltInFunction(BaseFunction):
         return execute_randint_func(self, exec_ctx)
     execute_randint.arg_names = ["from", "to"]
 
-BuiltInFunction.print           = BuiltInFunction("print")
-BuiltInFunction.print_ret       = BuiltInFunction("print_ret")
-BuiltInFunction.input           = BuiltInFunction("input")
-BuiltInFunction.input_int       = BuiltInFunction("input_int")
-BuiltInFunction.clear           = BuiltInFunction("clear")
-BuiltInFunction.exit            = BuiltInFunction("exit")
-BuiltInFunction.update_value    = BuiltInFunction("update_value")
-BuiltInFunction.is_num          = BuiltInFunction("is_num")
-BuiltInFunction.is_str          = BuiltInFunction("is_str")
-BuiltInFunction.is_list         = BuiltInFunction("is_list")
-BuiltInFunction.is_func         = BuiltInFunction("is_func")
-BuiltInFunction.append          = BuiltInFunction("append")
-BuiltInFunction.pop             = BuiltInFunction("pop")
-BuiltInFunction.extend          = BuiltInFunction("extend")
-BuiltInFunction.run             = BuiltInFunction("run")
-BuiltInFunction.len             = BuiltInFunction("len")
-BuiltInFunction.randint         = BuiltInFunction("randint")
+    def execute_to_str(self, exec_ctx):
+        """
+        Convert a number or list to string.
+        Example 1:
+            var list = [1, 2, 3]
+            var list_str = to_str(list)
+            print(list_str) -> 1, 2, 3
+            # This is very similar to just printing the list but you can also concat differently.
+            # Notice the comma on the second output
+            print(list_str + "test") -> 1, 2, 3test
+            print(list + "test") -> 1, 2, 3, test
+        Example 2:
+            var number = 1
+            var number_str = to_str(number)
+            var number_str_2 = number_str + 2 - > Illegal operator
+            var number_str_2 = number_str + "2" -> 12
+        :arg value: The thing you want to cast to a string
+        :return: The string version of the value
+        """
+        return execute_to_str_func(self, exec_ctx)
+    execute_to_str.arg_names = ["value"]
+
+    def execute_to_int(self, exec_ctx):
+        """
+        Convert a string to an int.
+        Example:
+            var string = "2"
+            var string_num = to_int(string)
+            print(string_num + 2) -> 4
+        :arg value: A string you want to convert to an integer.
+        :return: The integer version of the value
+        """
+        return execute_to_int_func(self, exec_ctx)
+    execute_to_int.arg_names = ["value"]
+
+    def execute_pyeval(self, exec_ctx):
+        """
+        Eval the value in python.
+        Example 1:
+            var test = `for i in range(10): print(i)`
+            eval(test) -> 0 1 2 3 4 5 6 7 8 9
+        Example 2:
+            var test = `for i in range(10):
+                print(i)`
+            eval(test) -> 0 1 2 3 4 5 6 7 8 9
+        Example 3:
+            var test = `"hello"`
+            var response = eval(test)
+            print(response) -> "hello"
+        Example 4:
+            var test = `input("What's your name? ")`
+            var name = eval(test) -? Julian
+            print(name) -> Julian
+        :arg code: The code you want to evaluate.
+        :return: The response, if any, of the eval.
+        """
+        return execute_pyeval_func(self, exec_ctx)
+    execute_pyeval.arg_names = ["code"]

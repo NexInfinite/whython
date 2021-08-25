@@ -1,0 +1,26 @@
+# run("examples/eval")
+
+var test_1 = `input("What's your name? ")`
+var name = eval(test_1)
+print(name)
+
+var test_2 = `
+print("test_2")
+`
+print("\n")
+eval(test_2)
+
+var test_3 = `
+for i in range(10):
+    print(f"hello, test_3! {i}")
+`
+print("\n")
+eval(test_3)
+
+var test_4 = `
+def test_4():
+    print("Test 4 is wrapped in a function!")
+test_4()
+`
+print("\n")
+eval(test_4)

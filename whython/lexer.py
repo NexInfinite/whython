@@ -49,6 +49,8 @@ class Lexer:
                 tokens.append(self.make_number())
             elif self.current_char in LETTERS_DIGITS:
                 tokens.append(self.make_identifier())
+            elif self.current_char == "`":
+                tokens.append(self.make_code_block())
             elif self.current_char == '"':
                 tokens.append(self.make_string())
             elif self.current_char == "!":
@@ -189,10 +191,25 @@ class Lexer:
         self.advance()
         return Token(TT_STRING, final_string, pos_start, self.pos)
 
+    def make_code_block(self):
+        final_string = ""
+        pos_start = self.pos.copy()
+        self.advance()
+
+        while self.current_char is not None and self.current_char != "`":
+            if self.current_char == ";":
+                final_string += "\n"
+            else:
+                final_string += self.current_char
+            self.advance()
+
+        self.advance()
+        return Token(TT_STRING, final_string, pos_start, self.pos)
+
     def skip_comment(self):
         self.advance()
 
-        while self.current_char != "\n":
+        while self.current_char != "\n" and self.current_char is not None:
             self.advance()
 
         self.advance()

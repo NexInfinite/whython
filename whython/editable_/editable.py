@@ -76,6 +76,7 @@ global_symbol_table.set("pi", Number.pi)
 # changing the below to
 # global_symbol_table.set("shout", BuiltInFunction("print"))
 # will make shout("value") work instead of print("value")
+# If you want an example of what each of this functions do go to values/value_builtinfunc.py and find the correct function.
 global_symbol_table.set("print", BuiltInFunction("print"))
 global_symbol_table.set("input", BuiltInFunction("input"))
 global_symbol_table.set("input_int", BuiltInFunction("input_int"))
@@ -92,6 +93,9 @@ global_symbol_table.set("extend", BuiltInFunction("extend"))
 global_symbol_table.set("run", BuiltInFunction("run"))
 global_symbol_table.set("len", BuiltInFunction("len"))
 global_symbol_table.set("randint", BuiltInFunction("randint"))
+global_symbol_table.set("to_str", BuiltInFunction("to_str"))
+global_symbol_table.set("to_int", BuiltInFunction("to_int"))
+global_symbol_table.set("eval", BuiltInFunction("pyeval"))
 
 # *###################
 # * GRAMMAR RULES
