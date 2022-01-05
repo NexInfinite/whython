@@ -1,0 +1,29 @@
+# 😳("examples/emoji")
+
+😀 number = 🤑(1, 100)
+
+🥶 winner()
+    📣("You guessed correctly.")
+💀
+
+🥶 guesser()
+    🤨 true ⏩
+        📣("Guess a number between 1 and 100")
+        😀 input = 🤓()
+        ❓ input <= 100 👌 input >= 1 ⏩
+            ❓ input == number ⏩
+                📣("You got it!")
+                winner()
+                😱
+            😑 input < number ⏩
+                📣("Too low")
+            😑 input > number ⏩
+                📣("Too high")
+            💀
+        🤬
+            📣("You did not guess in the range, please try again")
+        💀  
+    💀     
+💀    
+
+guesser()

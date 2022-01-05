@@ -1,0 +1,23 @@
+number = randint(1, 100)
+
+func winner()
+    print("This is the winner message!!!")
+end
+
+while true do
+    print("Guess a number between 1 and 100")
+    var x = input_int()
+    if x <= 100 and x >= 1 do
+        if x == number do
+            print("You got it!")
+            winner()
+            break
+        elif x < number do
+            print("Too low!")
+        elif x > number do
+            print("Too high!")
+        end
+    else
+        print("Number not within range of 1 and 100")
+    end
+end
