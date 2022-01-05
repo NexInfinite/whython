@@ -11,6 +11,7 @@ it into a shitpost, it doesn't matter. You have the control!
 #### Download [whython](whython)
 1. type `git clone https://github.com/NexInfinite/whython` in terminal (or download by other means)
 2. cd whython/whython (or go into directory via other prefered method)
+3. download emoji via pip using `pip3 install emoji`
 
 #### Create a script
 1. make a file with the ending extesion ".whython"
