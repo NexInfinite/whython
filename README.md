@@ -9,8 +9,13 @@ it into a shitpost, it doesn't matter. You have the control!
 
 # How to run
 1. Download [whython](whython)
+  1.1. git clone https://github.com/NexInfinite/whython
+  1.2. cd whython/whython
 2. Run [shell.py](whython/shell.py)
-3. Have fun!
+  2.1. python3 shell.py
+3. Run a script
+  3.1. In the shell type "run('path/to/file')"
+5. Have fun!
 
 # What can whython do?
 At the point of writing this (the first main push) you can change anything in the 
