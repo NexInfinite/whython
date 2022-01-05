@@ -8,18 +8,17 @@ it easier for new people to learn the language; or even a change that makes
 it into a shitpost, it doesn't matter. You have the control!
 
 # How to run
-1. Download [whython](whython)
-<br>
-  1.1. git clone https://github.com/NexInfinite/whython
-<br>
-  1.2. cd whython/whython
-2. Run [shell.py](whython/shell.py)
-<br>
-  2.1. python3 shell.py
-3. Run a script
-<br>
-  3.1. In the shell type "run('path/to/file')"
-5. Have fun!
+## Download [whython](whython)
+1. type `git clone https://github.com/NexInfinite/whython` in terminal (or download by other means)
+2. cd whython/whython (or go into directory via other prefered method)
+
+## Create a script
+1. make a file with the ending extesion ".whython"
+2. write some code in it (use examples for help)
+
+## Run the script
+1. type `python3 shell.py` (or run script by other perfered method)
+2. In the shell type "run('path/to/file')"
 
 # What can whython do?
 At the point of writing this (the first main push) you can change anything in the 
