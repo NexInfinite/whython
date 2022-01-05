@@ -4,19 +4,22 @@ import os
 def main():
     welcome()
     while True:
-        text = input("whython > ")
-        if text.strip() == "": continue
-        if text.strip() == "exit": print("Goodbye!"); return
-        result, error = whython.run("<stdin>", text)
+        try:
+            text = input("whython > ")
+            if text.strip() == "": continue
+            if text.strip() == "exit": print("Goodbye!"); return
+            result, error = whython.run("<stdin>", text)
 
-        if error: print(error.as_string())
-        elif result:
-            for element in result.elements:
-                try:
-                    if element.value is not None:
-                        print(element)
-                except AttributeError:
-                    pass
+            if error: print(error.as_string())
+            elif result:
+                for element in result.elements:
+                    try:
+                        if element.value is not None:
+                            print(element)
+                    except AttributeError:
+                        pass
+        except KeyboardInterrupt:
+            print("\nType 'Exit' to leave shell.")
 
 def welcome():
     print("Welcome to whython v1.3")
