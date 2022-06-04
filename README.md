@@ -19,7 +19,7 @@ it into a shitpost, it doesn't matter. You have the control!
 
 #### Run the script
 1. type `python3 shell.py` (or run script by other perfered method)
-2. In the shell type "run('path/to/file')"
+2. In the shell type `run('path/to/file')`
 
 # What can whython do?
 At the point of writing this (the first main push) you can change anything in the 
