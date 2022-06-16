@@ -1,5 +1,7 @@
 # What is whython?
 > An almost fully customizable language made in python!
+> This is the ocr version with changed syntax so you can try code in their shitty psuedocode guide :) 
+> The below is just the same as the main branch, ignore this.
 
 Whython is a project language, the idea of it is that anyone can download
 and edit the language to make it suitable to what they want. This could be
@@ -79,14 +81,6 @@ Which will output<br>
 <br>
 This is all editable in the editable.py file.
 
-
-# Todo
-There are a couple of builtin function that have not been created yet, this will be 
-done in the future.
-- [x] to_str
-- [x] to_int
-- [x] eval
-- [ ] make builtins easier to add
 
 # What are the plans?
 I am planning to allow more control, for example a way to change all grammar rules 
