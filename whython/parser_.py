@@ -332,10 +332,10 @@ class Parser:
             body = res.register(self.statements())
             if res.error: return res
 
-            if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['end']):
+            if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['nexti']):
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"Expected 'end'"
+                    f"Expected 'nexti'"
                 ))
 
             res.register_advancement()
