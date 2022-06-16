@@ -335,7 +335,7 @@ class Parser:
             if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['end']):
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"Expected '{KEYWORDS_DICT['end']}'"
+                    f"Expected 'end'"
                 ))
 
             res.register_advancement()
