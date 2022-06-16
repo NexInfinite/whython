@@ -41,7 +41,7 @@ KEYWORDS_DICT = {
     "step": "step",
     "while": "while",
     "func": "func",
-    "end": "next",
+    "end": "end",
     "return": "return",
     "continue": "continue",
     "break": "break",
