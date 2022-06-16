@@ -5,7 +5,7 @@ def main():
     welcome()
     while True:
         try:
-            text = input("whython > ")
+            text = input("ocr > ")
             if text.strip() == "": continue
             if text.strip() == "exit": print("Goodbye!"); return
             result, error = whython.run("<stdin>", text)
