@@ -13,4 +13,4 @@ from runtime_results import RTResult
 
 def execute_clear_func(self, exec_ctx):
     os.system("cls" if os.name == "nt" else "clear")
-    return RTResult().success(Number.null)
+    return RTResult().success(Number.ignore)
