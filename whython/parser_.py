@@ -332,7 +332,7 @@ class Parser:
             body = res.register(self.statements())
             if res.error: return res
 
-            if not self.current_tok.matches(TT_KEYWORD, "next"):
+            if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['end']):
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
                     f"Expected 'next'"
