@@ -45,6 +45,7 @@ KEYWORDS_DICT = {
     "return": "return",
     "continue": "continue",
     "break": "break",
+    "nexti": "nexti"
 }
 
 # *###################
