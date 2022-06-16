@@ -91,10 +91,10 @@ global_symbol_table.set("append", BuiltInFunction("append"))
 global_symbol_table.set("pop", BuiltInFunction("pop"))
 global_symbol_table.set("extend", BuiltInFunction("extend"))
 global_symbol_table.set("run", BuiltInFunction("run"))
-global_symbol_table.set("len", BuiltInFunction("len"))
+global_symbol_table.set("length", BuiltInFunction("len"))
 global_symbol_table.set("randint", BuiltInFunction("randint"))
-global_symbol_table.set("to_str", BuiltInFunction("to_str"))
-global_symbol_table.set("to_int", BuiltInFunction("to_int"))
+global_symbol_table.set("str", BuiltInFunction("to_str"))
+global_symbol_table.set("int", BuiltInFunction("to_int"))
 global_symbol_table.set("eval", BuiltInFunction("pyeval"))
 
 # *###################
@@ -104,5 +104,5 @@ global_symbol_table.set("eval", BuiltInFunction("pyeval"))
 
 # With this True you will need "var".
 # With it False you can either use "var" or not.
-GRAMMAR_USE_IDENTIFIER_FOR_ASSIGNMENT = True
+GRAMMAR_USE_IDENTIFIER_FOR_ASSIGNMENT = False
 # More coming soon....
