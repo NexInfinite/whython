@@ -282,15 +282,6 @@ class Parser:
         res.register_advancement()
         self.advance()
 
-        if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['var']):
-            return res.failure(InvalidSyntaxError(
-                self.current_tok.pos_start, self.current_tok.pos_end,
-                f"Expected '{KEYWORDS_DICT['var']}'"
-            ))
-
-        res.register_advancement()
-        self.advance()
-
         if self.current_tok.type != TT_IDENTIFIER:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
@@ -334,15 +325,6 @@ class Parser:
         else:
             step_value = None
 
-        if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['do']):
-            return res.failure(InvalidSyntaxError(
-                self.current_tok.pos_start, self.current_tok.pos_end,
-                f"Expected '{KEYWORDS_DICT['do']}'"
-            ))
-
-        res.register_advancement()
-        self.advance()
-
         if self.current_tok.type == TT_NEWLINE:
             res.register_advancement()
             self.advance()
@@ -350,10 +332,10 @@ class Parser:
             body = res.register(self.statements())
             if res.error: return res
 
-            if not self.current_tok.matches(TT_KEYWORD, KEYWORDS_DICT['end']):
+            if not self.current_tok.matches(TT_KEYWORD, "next"):
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"Expected '{KEYWORDS_DICT['end']}'"
+                    f"Expected 'next'"
                 ))
 
             res.register_advancement()
